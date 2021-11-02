@@ -562,10 +562,14 @@ async def auto_filter(client, message):
             )
         imdb=await get_poster(search)
         if imdb and imdb.get('poster'):
-            await message.reply_photo(photo=imdb.get('poster'), caption=f"🎬 Title: <a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Genres: {imdb.get('genres')}\n📆 Year: <a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Rating: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a>/10\n🗣️ Requested BY {message.from_user.mention}\n\n★ {message.chat.title} ♻️</b>", reply_markup=InlineKeyboardMarkup(btn))
+            await message.reply_photo(photo=imdb.get('poster'), caption=f"<b>🎬 Title: <a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Genres: {imdb.get('genres')}\n🌟 Rating: <a href={imdb['url']}/ratings>{imdb.get('rating')}/10</a>\n🔰 𝖢𝖺𝗌𝗍: <a href={imdb['url']}>{imdb.get('actors')}</a>\n🗳️ 𝖵𝗈𝗍𝖾𝗌 : {imdb.get('votes')}\n🎙️ 𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾𝗌: {imdb.get('language')}\n✍️ 𝖣𝗂𝗋𝖾𝖼𝗍𝗈𝗋 : <a href={imdb['url']}>{imdb.get('director')}</a>\n📆 Release: <a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n⏱ Duration : {imdb.get('duration')}\n🌎 𝖢𝗈𝗎𝗇𝗍𝗋𝗒 𝗈𝖿 𝗈𝗋𝗂𝗀𝗂𝗇: {imdb.get('country')}\n🗣️ Requested BY {message.from_user.mention}\n\n★ {message.chat.title} ♻️</b>", reply_markup=InlineKeyboardMarkup(btn))
+            await asyncio.sleep(50)
+            await message.delete()
         elif imdb:
-            await message.reply_text(f"🎬 Title: <a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Genres: {imdb.get('genres')}\n📆 Year: <a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n🌟 Rating: <a href={imdb['url']}/ratings>{imdb.get('rating')}</a>/10\n🗣️ Requested BY {message.from_user.mention}\n\n★ {message.chat.title} ♻️</b>", reply_markup=InlineKeyboardMarkup(btn))
+            await message.reply_text(f"<b>🎬 Title: <a href={imdb['url']}>{imdb.get('title')}</a>\n🎭 Genres: {imdb.get('genres')}\n🌟 Rating: <a href={imdb['url']}/ratings>{imdb.get('rating')}/10</a>\n🔰 𝖢𝖺𝗌𝗍: <a href={imdb['url']}>{imdb.get('actors')}</a>\n🗳️ 𝖵𝗈𝗍𝖾𝗌 : {imdb.get('votes')}\n🎙️ 𝖫𝖺𝗇𝗀𝗎𝖺𝗀𝖾𝗌: {imdb.get('language')}\n✍️ 𝖣𝗂𝗋𝖾𝖼𝗍𝗈𝗋 : <a href={imdb['url']}>{imdb.get('director')}</a>\n📆 Release: <a href={imdb['url']}/releaseinfo>{imdb.get('year')}</a>\n⏱ Duration : {imdb.get('duration')}\n🌎 𝖢𝗈𝗎𝗇𝗍𝗋𝗒 𝗈𝖿 𝗈𝗋𝗂𝗀𝗂𝗇: {imdb.get('country')}\n🗣️ Requested BY {message.from_user.mention}\n\n★ {message.chat.title} ♻️</b>", reply_markup=InlineKeyboardMarkup(btn))
+            await asyncio.sleep(50)
+            await message.delete()
         else:
             await message.reply_text(f"<b>Here is What I Found In My Database For Your Query {search} ‌‎ </b>", reply_markup=InlineKeyboardMarkup(btn))
-            await asyncio.sleep(20)
+            await asyncio.sleep(50)
             await message.delete()
